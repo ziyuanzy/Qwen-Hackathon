@@ -9,8 +9,8 @@ agent = AIAgent(
 
 def determine_priority(
     tenant_message: str,
-    vision_result,
-    category,
+    vision_result=None,
+    category=None,
 ):
     return agent.run(
         tenant_message=tenant_message,

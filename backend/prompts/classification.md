@@ -20,3 +20,5 @@ Example
 {
     "category":"Plumbing"
 }
+
+If vision findings are unavailable, classify using the resident description only.

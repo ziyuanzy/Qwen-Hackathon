@@ -5,30 +5,24 @@ from fastapi import UploadFile
 
 UPLOAD_DIR = Path("uploads")
 
-UPLOAD_DIR.mkdir(
-    exist_ok=True,
-)
+UPLOAD_DIR.mkdir(exist_ok=True)
 
 
 def save_upload(
-    image: UploadFile,
-) -> str:
+    image: UploadFile | None,
+) -> str | None:
 
-    extension = Path(
-        image.filename,
-    ).suffix
+    if image is None:
+        return None
+
+    extension = Path(image.filename).suffix
 
     filename = f"{uuid4()}{extension}"
 
     filepath = UPLOAD_DIR / filename
 
-    with open(
-        filepath,
-        "wb",
-    ) as file:
+    with open(filepath, "wb") as file:
 
-        file.write(
-            image.file.read(),
-        )
+        file.write(image.file.read())
 
     return str(filepath)

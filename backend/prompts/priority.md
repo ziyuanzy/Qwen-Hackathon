@@ -30,3 +30,8 @@ Return only JSON:
     "priority":"",
     "reason":""
 }
+
+An image may not always be provided.
+
+If vision_result is null or missing,
+perform your analysis using the resident description only.

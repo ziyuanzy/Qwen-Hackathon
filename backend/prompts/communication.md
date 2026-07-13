@@ -59,6 +59,7 @@ Rules:
 - Be concise.
 - Do not invent facts.
 - Use clear professional English.
+- If no image was provided, avoid referencing image analysis.
 
 --------------------------------------------------------
 If consistency == "MISMATCH":

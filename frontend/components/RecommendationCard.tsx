@@ -25,7 +25,7 @@ export default function RecommendationCard({
     const [loading, setLoading] = useState(false);
 
     const mismatch =
-        ticket.analysis.vision.consistency === "MISMATCH";
+        ticket.analysis.vision?.consistency === "MISMATCH";
 
     async function handleApprove() {
 

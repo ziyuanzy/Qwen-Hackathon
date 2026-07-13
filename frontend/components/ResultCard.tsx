@@ -18,7 +18,11 @@ export default function ResultCard({ result }: Props) {
                     Vision
                 </h2>
 
-                <p>{result.vision.damage}</p>
+                <p>
+                    {result.vision
+                        ? result.vision.damage
+                        : "No image submitted"}
+                </p>
 
             </div>
 

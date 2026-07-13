@@ -9,37 +9,40 @@ from services.communication_service import generate_messages
 
 def process_ticket(
     tenant_message: str,
-    image_path: str,
+    image_path: str | None = None,
 ) -> OrchestratorResult:
 
-    # Step 1 - Vision
-    vision = analyze_image(
-    image_path=image_path,
-    tenant_message=tenant_message,
-    )
+    vision = None
 
-    # Stop immediately if image is invalid
-    if not vision.is_valid_image:
+    # Run Vision AI only if image exists
+    if image_path:
 
-        raise ValueError(
-            vision.invalid_reason
-            or "Uploaded image is not a valid maintenance photo."
+        vision = analyze_image(
+            image_path=image_path,
+            tenant_message=tenant_message,
         )
 
-    # Step 2 - Classification
+        if not vision.is_valid_image:
+
+            raise ValueError(
+                vision.invalid_reason
+                or "Uploaded image is not a valid maintenance photo."
+            )
+
+    # Classification
     classification = classify_issue(
         tenant_message=tenant_message,
         vision_result=vision,
     )
 
-    # Step 3 - Priority
+    # Priority
     priority = determine_priority(
         tenant_message=tenant_message,
         vision_result=vision,
         category=classification,
     )
 
-    # Step 4 - Planner
+    # Planner
     planner = generate_plan(
         tenant_message=tenant_message,
         vision_result=vision,
@@ -47,7 +50,7 @@ def process_ticket(
         priority=priority,
     )
 
-    # Step 5 - Communication
+    # Communication
     communication = generate_messages(
         tenant_message=tenant_message,
         category=classification,

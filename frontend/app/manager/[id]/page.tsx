@@ -291,23 +291,35 @@ useEffect(() => {
 
                 <section className="rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-lg">
 
-                    <h2 className="text-2xl font-semibold text-white">
+    <h2 className="text-2xl font-semibold text-white">
+        Uploaded Image
+    </h2>
 
-                        Uploaded Image
+    {
+        ticket.image_path ? (
 
-                    </h2>
+            <img
+                src={`http://127.0.0.1:8000/${ticket.image_path}`}
+                alt="Maintenance"
+                className="mt-6 rounded-lg max-h-[500px]"
+            />
 
-                    <img
+        ) : (
 
-                        src={`http://127.0.0.1:8000/${ticket.image_path}`}
+            <div className="mt-6 rounded-lg bg-slate-800 p-6">
 
-                        alt="Maintenance"
+                <p className="text-slate-300">
 
-                        className="mt-6 rounded-lg max-h-[500px]"
+                    No image was submitted.
 
-                    />
+                </p>
 
-                </section>
+            </div>
+
+        )
+    }
+
+</section>
 
                 <VisionCard
 

@@ -17,26 +17,38 @@ def generate_messages(
 
     return agent.run(
 
-        tenant_message=tenant_message,
+    tenant_message=tenant_message,
 
-        vision_description=vision.description,
+    vision_description=(
+        vision.description
+        if vision
+        else "No image provided"
+    ),
 
-        consistency=vision.consistency,
+    consistency=(
+        vision.consistency
+        if vision
+        else "NO_IMAGE"
+    ),
 
-        consistency_reason=vision.consistency_reason,
+    consistency_reason=(
+        vision.consistency_reason
+        if vision
+        else "No image was submitted."
+    ),
 
-        category=category.category,
+    category=category.category,
 
-        priority=priority.priority,
+    priority=priority.priority,
 
-        contractor=planner.recommended_contractor,
+    contractor=planner.recommended_contractor,
 
-        estimated_duration=planner.estimated_duration,
+    estimated_duration=planner.estimated_duration,
 
-        estimated_cost=planner.estimated_cost,
+    estimated_cost=planner.estimated_cost,
 
-        immediate_actions="\n".join(
-            planner.immediate_actions,
-        ),
+    immediate_actions="\n".join(
+        planner.immediate_actions,
+    ),
 
-    )
+)

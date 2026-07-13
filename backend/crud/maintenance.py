@@ -137,7 +137,7 @@ def create_request(
     tenant_name: str,
     unit_number: str,
     tenant_message: str,
-    image_path: str,
+    image_path: str | None,
 ):
 
     request = MaintenanceRequest(

@@ -8,7 +8,7 @@ agent = AIAgent(
 
 def classify_issue(
     tenant_message: str,
-    vision_result: dict,
+    vision_result=None,
 ):
     return agent.run(
         tenant_message=tenant_message,

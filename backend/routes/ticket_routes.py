@@ -28,7 +28,7 @@ async def create_ticket(
     tenant_name: str = Form(...),
     unit_number: str = Form(...),
     tenant_message: str = Form(...),
-    image: UploadFile = File(...),
+    image: UploadFile | None = File(None),
     db: Session = Depends(get_db),
 ):
 

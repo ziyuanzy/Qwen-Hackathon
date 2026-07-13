@@ -25,19 +25,20 @@ export default function TicketForm() {
 
     const [currentAgent, setCurrentAgent] = useState(0);
 
-    const agents = [
-
+    const activeAgents = image
+    ? [
         "Vision Agent",
-
         "Classification Agent",
-
         "Priority Agent",
-
         "Planner Agent",
-
         "Communication Agent",
-
-    ];
+      ]
+    : [
+        "Classification Agent",
+        "Priority Agent",
+        "Planner Agent",
+        "Communication Agent",
+      ];
 
     if (submitted) {
 
@@ -99,11 +100,6 @@ export default function TicketForm() {
 
     e.preventDefault();
 
-    if (!image) {
-        setErrorMessage("Please upload a maintenance photo.");
-        return;
-    }
-
     setErrorMessage("");
     setLoading(true);
 
@@ -115,7 +111,12 @@ export default function TicketForm() {
     form.append("tenant_name", tenantName);
     form.append("unit_number", unitNumber);
     form.append("tenant_message", message);
-    form.append("image", image);
+    if (image) {
+        form.append(
+            "image",
+            image,
+        );
+    }
 
     let value = 0;
 
@@ -123,9 +124,9 @@ export default function TicketForm() {
 
         value += 2;
 
-        if (value > 92) {
+        if (value > 98) {
 
-            value = 92;
+            value = 98;
 
         }
 
@@ -137,7 +138,7 @@ export default function TicketForm() {
 
                 Math.floor(value / 20),
 
-                agents.length - 1,
+                activeAgents.length - 1,
 
             ),
 
@@ -165,7 +166,7 @@ export default function TicketForm() {
 
         setProgress(100);
 
-        setCurrentAgent(agents.length);
+        setCurrentAgent(activeAgents.length);
 
         setTicketId(response.request_id);
 
@@ -269,8 +270,6 @@ export default function TicketForm() {
 
             <input
 
-                required
-
                 type="file"
 
                 accept="image/*"
@@ -288,6 +287,10 @@ export default function TicketForm() {
                 className="text-slate-300"
 
             />
+
+            <p className="text-sm text-slate-400">
+                Photo attachment is optional but highly encouraged for more accurate diagnosis.
+            </p>
 
             {
 
@@ -347,7 +350,7 @@ export default function TicketForm() {
 
                             {
 
-                                agents.map((agent, index) => (
+                                activeAgents.map((agent, index) => (
 
                                     <div
 

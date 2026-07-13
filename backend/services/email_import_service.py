@@ -35,12 +35,6 @@ def import_email(
 
     print("=" * 60)
 
-    if image_path is None:
-
-        raise ValueError(
-            "No supported image attachment was found. Please advise the resident to attach one JPG, JPEG, PNG or WEBP image to the email before importing."
-        )
-
     sender = email["sender"]
 
     body = email["body"]

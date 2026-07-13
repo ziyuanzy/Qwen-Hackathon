@@ -60,7 +60,7 @@ export interface Communication {
 
 export interface Analysis {
 
-    vision: Vision;
+    vision?: Vision | null;
 
     classification: Classification;
 
@@ -82,7 +82,7 @@ export interface Ticket {
 
     tenant_message: string;
 
-    image_path: string;
+    image_path?: string | null;
 
     status: string;
 

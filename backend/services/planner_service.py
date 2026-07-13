@@ -27,7 +27,11 @@ def generate_plan(
 
         return agent.run(
             tenant_message=tenant_message,
-            vision_damage=vision_result.damage,
+            vision_damage=(
+                vision_result.damage
+                if vision_result
+                else "No image provided"
+                ),
             category=category.category,
             priority=priority.priority,
             contractor_type=reference.contractor_type,

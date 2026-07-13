@@ -110,12 +110,6 @@ export default function PlannerCard({
 
                 <div>
 
-                    <p className="text-sm text-slate-400">
-
-                        Why this recommendation?
-
-                    </p>
-
                     <p>
 
                         {planner.explanation}

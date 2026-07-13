@@ -18,7 +18,7 @@ type Props = {
 
     planner: Planner;
 
-    vision: Vision;
+    vision: Vision | null;
 
     ticketId: number;
 
@@ -182,7 +182,7 @@ export default function CommunicationCard({
 
     const mismatch =
 
-        vision.consistency === "MISMATCH";
+        vision?.consistency === "MISMATCH";
 
     const residentSubject = mismatch
 
@@ -198,7 +198,7 @@ export default function CommunicationCard({
 
     const contractorSubject =
         
-    `Work Order - Repair ${vision.damage ?? planner.recommended_contractor}`;
+    `Work Order - Repair ${vision?.damage ?? planner.recommended_contractor}`;
 
     return (
 

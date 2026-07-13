@@ -8,9 +8,14 @@ from agents.communication_agent import CommunicationResult
 
 
 class OrchestratorResult(BaseModel):
-    vision: VisionResult
+
+    vision: VisionResult | None = None
+
     classification: ClassificationResult
+
     priority: PriorityResult
+
     planner: PlannerResult
+
     communication: CommunicationResult
 

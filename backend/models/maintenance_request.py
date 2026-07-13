@@ -26,7 +26,10 @@ class MaintenanceRequest(Base):
 
     tenant_message = Column(Text)
 
-    image_path = Column(String)
+    image_path = Column(
+        String,
+        nullable=True,
+    )
 
     status = Column(
         String,

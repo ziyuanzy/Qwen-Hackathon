@@ -11,7 +11,7 @@ def submit_ticket(
     tenant_name: str,
     unit_number: str,
     tenant_message: str,
-    image_path: str,
+    image_path: str | None = None,
 ):
 
     try:
@@ -44,8 +44,10 @@ def submit_ticket(
     except Exception as e:
 
         print("========== TICKET ERROR ==========")
+
         import traceback
         traceback.print_exc()
+
         print("==================================")
 
         return {

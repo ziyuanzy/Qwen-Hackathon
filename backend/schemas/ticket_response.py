@@ -11,7 +11,7 @@ from agents.communication_agent import CommunicationResult
 
 class AnalysisResponse(BaseModel):
 
-    vision: VisionResult
+    vision: VisionResult | None = None
 
     classification: ClassificationResult
 
@@ -36,7 +36,7 @@ class TicketResponse(BaseModel):
 
     tenant_message: str
 
-    image_path: str
+    image_path: str | None = None
 
     status: str
 

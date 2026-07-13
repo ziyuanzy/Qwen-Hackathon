@@ -142,25 +142,6 @@ useEffect(() => {
 
     }
 
-    if (!ticket) {
-
-    return (
-
-        <>
-            <Navbar />
-
-            <main className="max-w-6xl mx-auto py-12">
-
-                Ticket not found.
-
-            </main>
-
-        </>
-
-    );
-
-}
-
     return (
 
         <>

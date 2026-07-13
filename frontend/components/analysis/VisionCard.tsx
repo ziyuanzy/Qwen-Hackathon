@@ -2,7 +2,7 @@ import { Vision } from "@/types/ticket";
 
 type Props = {
 
-    vision: Vision | null;
+    vision?: Vision | null;
 
 };
 
@@ -28,9 +28,7 @@ function consistencyColour(status?: string) {
 
 export default function VisionCard({
     vision,
-}: {
-    vision: any;
-}) {
+}: Props) {
 
     if (!vision) {
 

@@ -18,7 +18,7 @@ type Props = {
 
     planner: Planner;
 
-    vision: Vision | null;
+    vision?: Vision | null;
 
     ticketId: number;
 

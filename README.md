@@ -192,7 +192,7 @@ This aligns directly with the objectives of the **Autopilot Agent Track**, which
 
 # System Architecture
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](architecture.png)
 
 ### High-Level Workflow
 
@@ -492,11 +492,38 @@ Demo video:
 
 ---
 
+## Demo Assumptions
+
+This prototype uses a curated contractor reference dataset for demonstration purposes.
+
+In a production deployment, contractor information would be retrieved from:
+- Approved vendor databases
+- Property management systems
+- Real-time contractor availability services
+
+The contractor recommendations shown in the demo are intended to demonstrate the AI workflow rather than represent real vendor assignments.
+
+---
+
+## Authentication
+
+For hackathon demonstration purposes, authentication has been intentionally simplified.
+
+In a production deployment:
+
+- Residents would access the platform through an existing resident portal.
+- Property managers would authenticate through company SSO or enterprise identity systems.
+- Role-based access control (RBAC) would restrict administrative actions.
+- Ticket approval workflows would require authenticated manager accounts.
+
+Authentication was omitted to allow judges to immediately test the complete workflow without account setup.
+
+---
+
 # Future Improvements
 
 Potential future enhancements include:
 
-- Automated contractor dispatch
 - Resident mobile application
 - Predictive maintenance analytics
 - Maintenance trend dashboards

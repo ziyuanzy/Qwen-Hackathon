@@ -47,7 +47,7 @@ export default function ImportEmailPage() {
 
             }
 
-            return current + 1;
+            return current + 2;
 
         });
 

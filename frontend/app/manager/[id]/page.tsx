@@ -280,7 +280,7 @@ useEffect(() => {
         ticket.image_path ? (
 
             <img
-                src={`http://127.0.0.1:8000/${ticket.image_path}`}
+                src={`${process.env.NEXT_PUBLIC_API_URL}/${ticket.image_path}`}
                 alt="Maintenance"
                 className="mt-6 rounded-lg max-h-[500px]"
             />

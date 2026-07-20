@@ -84,34 +84,14 @@ The project demonstrates:
 - ✅ Human-in-the-loop checkpoints
 - ✅ Production-oriented architecture
 
-Resident / Email
-        │
-        ▼
- Vision Agent
-        ▼
- Classification
-        ▼
- Priority
-        ▼
- Planner
-        ▼
- Communication
-        ▼
- Human Approval
-        ▼
- Contractor
-
 ---
 
 # Live Demo
 
-### Frontend
-
-http://47.237.102.151
-
-### Backend API
-
-http://47.237.102.151/docs
+| Service | URL |
+|----------|-----|
+| Frontend | http://47.237.102.151 |
+| Backend API | http://47.237.102.151/docs |
 
 ---
 
@@ -130,6 +110,20 @@ http://47.237.102.151/docs
 | Database | Supabase PostgreSQL |
 | AI | Qwen Cloud (Qwen3.7-Plus) |
 | Deployment | Alibaba Cloud ECS |
+
+---
+
+# Qwen Cloud Usage
+
+mAIntAIn leverages Qwen Cloud throughout the maintenance workflow.
+
+| Agent | Qwen Cloud Task |
+|--------|-----------------|
+| Vision Agent | Image understanding |
+| Classification Agent | Issue categorization |
+| Priority Agent | Urgency reasoning |
+| Planner Agent | Repair planning |
+| Communication Agent | Message generation |
 
 ---
 
@@ -217,37 +211,42 @@ NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 
 # Alibaba Cloud Deployment
 
-The backend is deployed on **Alibaba Cloud Elastic Compute Service (ECS)**.
+The application is deployed on an Alibaba Cloud Elastic Compute Service (ECS) Ubuntu instance.
 
-Deployment stack:
+Production deployment includes:
 
-- Alibaba Cloud ECS
-- FastAPI
-- Nginx Reverse Proxy
-- Qwen Cloud APIs
+- Nginx reverse proxy
+- Next.js production server
+- FastAPI + Uvicorn
+- systemd service management
 - Supabase PostgreSQL
+- Qwen Cloud APIs
 
-The following files demonstrate Qwen Cloud integration running on Alibaba Cloud:
+Deployment-related configuration can be found under:
 
-```text
-backend/services/ai_agent.py
-backend/services/vision_service.py
-backend/services/classification_service.py
-backend/services/priority_service.py
-backend/services/planner_service.py
-backend/services/communication_service.py
-```
+backend/deployment/
+    maintain.service
+    maintain-frontend.service
+    nginx.conf
+    deploy.md
+
+Core Qwen Cloud integrations are implemented under:
+
+backend/services/
 
 ---
 
 # Demo Notes
 
-To simplify judging:
+For hackathon judging:
 
-- Authentication has been omitted.
-- Contractor recommendations use a curated demo dataset instead of real vendors.
+- Authentication has been intentionally omitted so judges can immediately access the application.
+- Contractor recommendations use a curated demonstration dataset instead of live vendor integrations.
 
-In production, the system would integrate with existing resident portals, enterprise authentication (SSO), and approved contractor databases.
+In production, the system would integrate with:
+- Existing resident portals
+- Enterprise authentication (SSO)
+- Approved contractor databases
 
 ---
 

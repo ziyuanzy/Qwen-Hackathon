@@ -1,67 +1,77 @@
 # Alibaba Cloud Deployment
 
-## Deployment Overview
+## Overview
 
-mAIntAIn is deployed on an Alibaba Cloud Elastic Compute Service (ECS) Ubuntu 22.04 instance.
+mAIntAIn is deployed on an **Alibaba Cloud Elastic Compute Service (ECS)** instance running **Ubuntu 22.04 LTS**.
 
-The deployment architecture consists of:
+The production deployment consists of:
 
-- Frontend: Next.js
-- Backend: FastAPI + Uvicorn
-- Reverse Proxy: Nginx
-- Database: Supabase PostgreSQL
-- AI Models: Qwen Cloud APIs
+- **Frontend:** Next.js
+- **Backend:** FastAPI + Uvicorn
+- **Reverse Proxy:** Nginx
+- **Database:** Supabase PostgreSQL
+- **AI Services:** Qwen Cloud APIs
 
 ---
 
 ## Production Services
 
-The application is managed using Linux systemd services.
+The application is managed using **systemd** to ensure services automatically start on boot and recover from failures.
 
 ### Backend
 
-Service File:
-
-maintain.service
-
-Runs:
-
-- FastAPI
-- Uvicorn
-
-Port:
-
-8000
-
----
+- Service: `maintain.service`
+- Runtime: FastAPI + Uvicorn
+- Internal Port: **8000**
 
 ### Frontend
 
-Service File:
-
-maintain-frontend.service
-
-Runs:
-
-- Next.js production server
-
-Port:
-
-3000
-
----
+- Service: `maintain-frontend.service`
+- Runtime: Next.js Production Server
+- Internal Port: **3000**
 
 ### Reverse Proxy
 
-Nginx routes HTTP traffic to the frontend.
+Nginx serves as the public-facing web server and routes requests to the appropriate services.
 
-Configuration is included in:
+Configuration file:
 
-nginx.conf
+```
+deployment/nginx.conf
+```
+
+Routing:
+
+```
+Internet
+      │
+      ▼
+Nginx (Port 80)
+      ├────────────► Next.js (3000)
+      └────────────► FastAPI (/docs, /api, /uploads) (8000)
+```
 
 ---
 
-## Public Endpoints
+## Database
+
+The application uses **Supabase PostgreSQL** as its production database.
+
+---
+
+## AI Integration
+
+AI inference is performed using **Qwen Cloud APIs** for:
+
+- Vision Analysis
+- Issue Classification
+- Priority Assessment
+- Repair Planning
+- Communication Generation
+
+---
+
+## Live Deployment
 
 Frontend
 
@@ -69,34 +79,27 @@ http://47.237.102.151
 
 Backend API Documentation
 
-http://47.237.102.151:8000/docs
-
----
-
-## Database
-
-The application uses Supabase PostgreSQL as its production database.
-
----
-
-## AI
-
-AI inference is performed using Qwen Cloud APIs for:
-
-- Vision Analysis
-- Classification
-- Priority Assessment
-- Repair Planning
-- Communication Generation
+http://47.237.102.151/docs
 
 ---
 
 ## Proof of Alibaba Cloud Deployment
 
-This repository includes the production deployment configuration files used on the Alibaba Cloud ECS instance:
+This repository includes the deployment configuration used on the Alibaba Cloud ECS instance:
 
-- maintain.service
-- maintain-frontend.service
-- nginx.conf
+```
+deployment/
+├── maintain.service
+├── maintain-frontend.service
+├── nginx.conf
+└── deployment.md
+```
 
-These files demonstrate how the backend and frontend are deployed and managed on Alibaba Cloud.
+These files configure:
+
+- systemd service management
+- Nginx reverse proxy
+- Production startup commands
+- Public routing for the deployed application
+
+The live application is served from an **Alibaba Cloud ECS Ubuntu 22.04** instance using the configuration included in this repository.

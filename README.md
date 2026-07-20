@@ -204,7 +204,7 @@ DATABASE_URL=your_supabase_postgresql_url
 Create a `.env.local` file inside **frontend/**
 
 ```env
-NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+NEXT_PUBLIC_API_URL=http://47.237.102.151
 ```
 
 ---

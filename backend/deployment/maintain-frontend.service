@@ -1,0 +1,40 @@
+[Unit]
+Description=mAIntAIn FastAPI Backend
+After=network.target
+
+[Service]
+
+User=root
+WorkingDirectory=/root/Qwen-Hackathon/backend
+
+ExecStart=/root/Qwen-Hackathon/backend/.venv/bin/uvicorn \
+main:app \
+--host 127.0.0.1 \
+--port 8000
+
+Restart=always
+
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target
+root@iZt4n37yepixsxvdqyecriZ:~/Qwen-Hackathon/frontend# cat /etc/systemd/system/maintain-frontend.service
+[Unit]
+Description=mAIntAIn Next.js Frontend
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Qwen-Hackathon/frontend
+
+Environment=NODE_ENV=production
+Environment=PORT=3000
+
+ExecStart=/usr/bin/npm start
+
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

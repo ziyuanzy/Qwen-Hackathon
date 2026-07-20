@@ -224,15 +224,19 @@ Production deployment includes:
 
 Deployment-related configuration can be found under:
 
+```text
 backend/deployment/
     maintain.service
     maintain-frontend.service
     nginx.conf
     deploy.md
+```
 
 Core Qwen Cloud integrations are implemented under:
 
+```text
 backend/services/
+```
 
 ---
 

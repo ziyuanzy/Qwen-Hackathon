@@ -9,7 +9,7 @@ from config import (
 client = OpenAI(
     api_key=QWEN_API_KEY,
     base_url=QWEN_BASE_URL,
-    timeout=120,
+    timeout=300,
 )
 
 

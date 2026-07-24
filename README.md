@@ -259,7 +259,7 @@ In production, the system would integrate with:
 YouTube:
 
 ```
-<Insert Video URL>
+https://youtu.be/ABHUQbRmvkM
 ```
 
 ---
